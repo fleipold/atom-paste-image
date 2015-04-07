@@ -1,0 +1,17 @@
+{
+  "name": "paste-image",
+  "main": "./lib/paste-image",
+  "version": "0.0.0",
+  "description": "A short description of your package",
+  "activationCommands": {
+    "atom-workspace": "paste-image:toggle"
+  },
+  "repository": "https://github.com/atom/paste-image",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=0.174.0 <2.0.0"
+  },
+  "dependencies": {
+      "space-pen": "5.1.1"
+  }
+}
