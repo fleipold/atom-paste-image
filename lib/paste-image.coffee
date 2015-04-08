@@ -16,7 +16,7 @@ module.exports = PasteImage =
     @subscriptions = new CompositeDisposable
 
     # Register command that toggles this view
-    @subscriptions.add atom.commands.add 'atom-workspace', 'paste-image:toggle': => @toggle()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'paste-image:pasteImage': => @pasteImage()
 
   deactivate: ->
     @modalPanel.destroy()
@@ -26,7 +26,7 @@ module.exports = PasteImage =
   serialize: ->
     pasteImageViewState: @pasteImageView.serialize()
 
-  toggle: ->
+  pasteImage: ->
     console.log 'PasteImage was toggled!'
     editor = atom.workspace.activePaneItem
     # editor.insertText('What is going on here?')

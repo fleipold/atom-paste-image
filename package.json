@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "description": "A short description of your package",
   "activationCommands": {
-    "atom-workspace": "paste-image:toggle"
+    "atom-workspace": "paste-image:pasteImage"
   },
   "repository": "https://github.com/atom/paste-image",
   "license": "MIT",
