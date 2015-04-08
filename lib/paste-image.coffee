@@ -1,4 +1,5 @@
 PasteImageView = require './paste-image-view'
+fs = require 'fs'
 {CompositeDisposable} = require 'atom'
 ClipBoard = require 'clipboard'
 
@@ -9,8 +10,11 @@ module.exports = PasteImage =
   subscriptions: null
 
   activate: (state) ->
-    @pasteImageView = new PasteImageView(state.pasteImageViewState)
+
+    @pasteImageView = new PasteImageView({action: => @doit()})
+    console.log('created paste image view')
     @modalPanel = atom.workspace.addModalPanel(item: @pasteImageView, visible: false)
+
 
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
@@ -19,22 +23,32 @@ module.exports = PasteImage =
     @subscriptions.add atom.commands.add 'atom-workspace', 'paste-image:pasteImage': => @pasteImage()
 
   deactivate: ->
+    console.log('deactivate')
     @modalPanel.destroy()
     @subscriptions.dispose()
     @pasteImageView.destroy()
+
 
   serialize: ->
     pasteImageViewState: @pasteImageView.serialize()
 
   pasteImage: ->
-    console.log 'PasteImage was toggled!'
+    @modalPanel.show()
+
+
+
+
+  doit: ->
+    console.log 'doit was called with name: '
+
+    name = @pasteImageView.name()
     editor = atom.workspace.activePaneItem
     # editor.insertText('What is going on here?')
-    # var image = clipboard.readImage()
-    # editor.insertText(editor.getPath())
+    image = clipboard.readImage()
+    fileName = editor.getPath()) + "." + name + ".png"
 
+    png = image.toPng()
+    fs.writeFileSync(filename, png)
+    #editor.insertText("![" + name + "](" + fileName +")")
 
-    if @modalPanel.isVisible()
-      @modalPanel.hide()
-    else
-      @modalPanel.show()
+    @modalPanel.hide()
