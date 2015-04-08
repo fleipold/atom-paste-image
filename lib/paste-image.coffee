@@ -28,7 +28,6 @@ module.exports = PasteImage =
     @subscriptions.dispose()
     @pasteImageView.destroy()
 
-
   serialize: ->
     pasteImageViewState: @pasteImageView.serialize()
 
@@ -42,13 +41,16 @@ module.exports = PasteImage =
     console.log 'doit was called with name: '
 
     name = @pasteImageView.name()
+    console.log name
     editor = atom.workspace.activePaneItem
     # editor.insertText('What is going on here?')
-    image = clipboard.readImage()
-    fileName = editor.getPath()) + "." + name + ".png"
+    image = ClipBoard.readImage()
+    filename = editor.getPath() + "." + name + ".png"
 
     png = image.toPng()
     fs.writeFileSync(filename, png)
-    #editor.insertText("![" + name + "](" + fileName +")")
+
+    link = "![#{name}](#{filename})"
+    editor.insertText(link)
 
     @modalPanel.hide()
