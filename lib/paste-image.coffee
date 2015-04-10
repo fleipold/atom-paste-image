@@ -35,8 +35,6 @@ module.exports = PasteImage =
     @modalPanel.show()
 
 
-
-
   doit: ->
     console.log 'doit was called with name: '
 

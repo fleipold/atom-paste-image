@@ -1,5 +1,14 @@
 # paste-image package
 
-A short description of your package.
+A package for the atom editor that supports pasting images
 
-![A screenshot of your package](https://f.cloud.github.com/assets/69169/2290250/c35d867a-a017-11e3-86be-cd7c5bf3ff9b.gif)
+Will save the image next to the current file and put a markdown image link into the file.
+
+Currently the hot-key is CTRL-ALT-O
+
+Todo:
+
+- [ ] Fix UI to get focus automatically
+- [ ] Make file placement policy configurable in UI, i.e. next to file or in subfolder.
+- [ ] Make dialog visually stand out a bit more.
+- [ ] Deal with failure, e.g. no image in clipboard or current editor not associated with filesystem location
