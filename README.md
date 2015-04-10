@@ -12,3 +12,6 @@ Todo:
 - [ ] Make file placement policy configurable in UI, i.e. next to file or in subfolder.
 - [ ] Make dialog visually stand out a bit more.
 - [ ] Deal with failure, e.g. no image in clipboard or current editor not associated with filesystem location
+
+Status: **Very experimental**
+
